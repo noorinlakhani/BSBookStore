@@ -1,0 +1,72 @@
+﻿@*
+  For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model BSBookStore.Models.BookVM
+
+<form method="post" asp-action="Edit">
+  <div class="border p-3">
+    <div class="form-group row">
+      <h2 class="text-info pl-3"> Edit Book </h2>
+    </div>
+    <div class="row">
+      <div class="col-8">
+        <input type="hidden" asp-for="Book.Id" />
+        <div asp-validation-summary="ModelOnly" class="text-danger">
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-4">
+        <label asp-for="Book.Title"></label>
+      </div>
+
+      <div class="col-8">
+        <input asp-for="Book.Title">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-4">
+        <label asp-for="Book.Author"></label>
+      </div>
+
+      <div class="col-8">
+        <input asp-for="Book.Author">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-4">
+        <label asp-for="Book.Price"></label>
+      </div>
+
+      <div class="col-8">
+        <input asp-for="Book.Price">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-4">
+        <label asp-for="Book.Category"></label>
+      </div>
+
+      <div class="col-8">
+        @Html.DropDownListFor(m => m.Book.CategoryId,
+              Model.CategoryList,
+              "select category",
+              new { @class = "form-control" })
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-3 offset-3">
+        <input type="submit" value="Update" class="btn btn-success form-control" />
+      </div>
+      <div class="col-3">
+        <a asp-action="Index" class="btn btn-primary form-control">Back </a>
+      </div>
+    </div>
+  </div>
+
+</form>
